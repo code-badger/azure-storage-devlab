@@ -18,19 +18,35 @@ namespace table_communication_manager
 
             table.CreateIfNotExists();
 
-            //CreateAlien(table, new Earthian("super_badger", "super_badger@localhost.earth"));
-            //GetAlien(table, "Earth", "badger@localhost.earth");
 
-            var awesome_badger = GetAlien(table, "Earth", "super_badger@localhost.earth");
-            //awesome_badger.Name = "awesome_badger";
+            TableBatchOperation batch = new TableBatchOperation();
 
-            //UpdateAlien(table, awesome_badger);
+            var earthian1 = new Earthian("earny", "earny@localhost.earth");
+            var earthian2 = new Earthian("bart", "bart@localhost.earth");
+            var earthian3 = new Earthian("big-bird", "big-bird@localhost.earth");
 
-            DeleteAlien(table, awesome_badger);
+            batch.Insert(earthian1);
+            batch.Insert(earthian2);
+            batch.Insert(earthian3);
+
+            table.ExecuteBatch(batch);
 
             GetAllAliens(table);
 
             Console.ReadKey();
+        }
+
+        static void Archive1()
+        {
+            //CreateAlien(table, new Earthian("super_badger", "super_badger@localhost.earth"));
+            //GetAlien(table, "Earth", "badger@localhost.earth");
+
+            //var awesome_badger = GetAlien(table, "Earth", "super_badger@localhost.earth");
+            //awesome_badger.Name = "awesome_badger";
+
+            //UpdateAlien(table, awesome_badger);
+
+            //DeleteAlien(table, awesome_badger);
         }
 
         static void CreateAlien(CloudTable table, Earthian earthian)
