@@ -18,9 +18,15 @@ namespace table_communication_manager
 
             table.CreateIfNotExists();
 
-            //CreateAlien(table, new AlienEarth("badger", "badger@localhost.earth"));
-
+            //CreateAlien(table, new Earthian("super_badger", "super_badger@localhost.earth"));
             //GetAlien(table, "Earth", "badger@localhost.earth");
+
+            var awesome_badger = GetAlien(table, "Earth", "super_badger@localhost.earth");
+            //awesome_badger.Name = "awesome_badger";
+
+            //UpdateAlien(table, awesome_badger);
+
+            DeleteAlien(table, awesome_badger);
 
             GetAllAliens(table);
 
@@ -34,13 +40,13 @@ namespace table_communication_manager
             table.Execute(insert);
         }
 
-        static void GetAlien(CloudTable table, string partitionKey, string rowKey)
+        static Earthian GetAlien(CloudTable table, string partitionKey, string rowKey)
         {
             TableOperation retrieve = TableOperation.Retrieve<Earthian>(partitionKey, rowKey);
 
             var result = table.Execute(retrieve);
 
-            Console.WriteLine(((Earthian)result.Result).Name);
+            return (Earthian)result.Result;
         }
 
         static void GetAllAliens(CloudTable table)
@@ -53,5 +59,20 @@ namespace table_communication_manager
                 Console.WriteLine(earthian.Name);
             }
         }
+
+        static void UpdateAlien(CloudTable table, Earthian earthian)
+        {
+            TableOperation update = TableOperation.Replace(earthian);
+
+            table.Execute(update);
+        }
+
+        static void DeleteAlien(CloudTable table, Earthian earthian)
+        {
+            TableOperation delete = TableOperation.Delete(earthian);
+
+            table.Execute(delete);
+        }
+
     }
 }
