@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "table-communication-manager
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "queue-communication-manager", "queue-communication-manager\queue-communication-manager.csproj", "{0D4D1A52-0C31-407E-942A-2A89B91B2152}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sotrage-access-manager", "sotrage-access-manager\sotrage-access-manager.csproj", "{CA9E6D6F-EE31-4BD4-A9FB-4C407A499C21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0D4D1A52-0C31-407E-942A-2A89B91B2152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D4D1A52-0C31-407E-942A-2A89B91B2152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D4D1A52-0C31-407E-942A-2A89B91B2152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9E6D6F-EE31-4BD4-A9FB-4C407A499C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9E6D6F-EE31-4BD4-A9FB-4C407A499C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9E6D6F-EE31-4BD4-A9FB-4C407A499C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9E6D6F-EE31-4BD4-A9FB-4C407A499C21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
