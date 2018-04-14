@@ -1,7 +1,11 @@
 # Azure Storage DevLab
 
-This repo keeps track of Azure Storage projects that are developed using C# Visual Studio solution. 
-Solution is meant to be developed and executed under Azure VM VS 2017.
+Azure Storage communication solutions developed under C# and ASP.NET MVC.
+
+- Blob Connection Manager
+- Queue Communication Manager
+- Table Communication Manager
+- Storage Access Manager
 
 
 ## How to use
