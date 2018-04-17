@@ -26,7 +26,8 @@ namespace sotrage_access_manager.Controllers
             {
                 if (blob.GetType() == typeof(CloudBlockBlob))
                 {
-                    var sas = GetSASToken(storageAccount);
+                    //var sas = GetSASToken(storageAccount);
+                    var sas = container.GetSharedAccessSignature(null, "MySAP");
 
                     blobs.Add(new BlobImage { BlobUri = blob.Uri.ToString() + sas });
                 }
