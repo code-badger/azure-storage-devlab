@@ -2,6 +2,7 @@
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using sotrage_access_manager.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -25,11 +26,27 @@ namespace sotrage_access_manager.Controllers
             {
                 if (blob.GetType() == typeof(CloudBlockBlob))
                 {
-                    blobs.Add(new BlobImage { BlobUri = blob.Uri.ToString() });
+                    var sas = GetSASToken(storageAccount);
+
+                    blobs.Add(new BlobImage { BlobUri = blob.Uri.ToString() + sas });
                 }
             }
 
             return View(blobs);
+        }
+
+        static string GetSASToken(CloudStorageAccount storageAccount)
+        {
+            SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
+            {
+                Permissions = SharedAccessAccountPermissions.Read | SharedAccessAccountPermissions.Write,
+                Services = SharedAccessAccountServices.Blob,
+                ResourceTypes = SharedAccessAccountResourceTypes.Object,
+                SharedAccessExpiryTime = DateTime.Now.AddMinutes(30),
+                Protocols = SharedAccessProtocol.HttpsOnly
+            };
+
+            return storageAccount.GetSharedAccessSignature(policy);
         }
     }
 }
